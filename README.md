@@ -1,9 +1,11 @@
-# R7 Canidate Assessment
+# R7 Candidate Assessment
 
-## Getting Started
+## Requirements
 
 This repository assumes you have [Node](https://nodejs.org), [Yarn](https://yarnpkg.com/lang/en/docs/install/), and
 [Git](https://git-scm.com/) installed.
+
+## Getting Started
 
 Fork this repository and then clone it to your local machine. Using your terminal, CD into the project's directory and
 run `yarn setup`.
