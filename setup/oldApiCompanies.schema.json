@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "faker": "random.uuid"
+          },
+          "name": {
+            "type": "string",
+            "faker": "company.companyName"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "street": {
+                "type": "string",
+                "faker": {
+                  "fake": "{{address.streetAddress}} {{address.streetSuffix}}"
+                }
+              },
+              "state": {
+                "type": "string",
+                "faker": "address.state"
+              },
+              "zipCode": {
+                "type": "string",
+                "faker": "address.zipCode"
+              }
+            },
+            "required": ["street", "state", "zipCode"]
+          },
+          "logo": {
+            "type": "string",
+            "faker": "image.avatar"
+          }
+        },
+        "required": ["id", "name", "address"]
+      }
+    }
+  },
+  "required": ["records"]
+}

@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "faker": "random.uuid"
+          },
+          "name": {
+            "type": "string",
+            "faker": "name.findName"
+          },
+          "phone": {
+            "type": "string",
+            "faker": "phone.phoneNumber"
+          },
+          "email": {
+            "type": "string",
+            "faker": "internet.email"
+          }
+        },
+        "required": ["id", "name", "email", "phone"]
+      }
+    }
+  },
+  "required": ["records"]
+}
