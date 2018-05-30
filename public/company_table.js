@@ -57,14 +57,16 @@ function BuildCompanyTable(jsonObj) {
         var companyId;
         var employeeCount = 0;
 
-        var peopleRequestURL = 'http://localhost:8080/api/1/people';
-        var peopleRequest = new XMLHttpRequest();
-        peopleRequest.open('GET', peopleRequestURL);
-        peopleRequest.responseType = 'json';
-        peopleRequest.send();
-        var peopleResponse = peopleRequest.response;
+        //var peopleRequestURL = 'http://localhost:8080/api/1/people';
+        //var peopleRequest = new XMLHttpRequest();
+        //peopleRequest.open('GET', peopleRequestURL);
+        //peopleRequest.responseType = 'json';
+        //peopleRequest.send();
+        //var peopleResponse = peopleRequest.response;
 
-        var people = peopleResponse['records'];
+        var peopleJSON = $.get('http://localhost:8080/api/1/people');
+
+        var people = peopleJSON['records'];
         for (var j = 0; j < people.length; j++) {
             if (companyId === people[j].companyId)
                 employeeCount++;
