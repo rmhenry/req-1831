@@ -40,13 +40,16 @@ request.send();
 
 request.onload = function () {
     var oldCompanies = request.response;
-    BuildCompanyTable();
+    BuildCompanyTable(oldCompanies);
     DisplayCompanyData(oldCompanies);
 }
 
-function BuildCompanyTable() {
+function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
-    companyTable.innerHTML = '<tr><th>Company Name</th><th>Address</th><th>No. Employees</th>';
+    var headings = companyTable.insertRow();
+    headings.innerHTML = '<th>Company Name</th><th>Address</th><th>No. Employees</th>';
+    //companyTable.innerHTML = '<tr><th>Company Name</th><th>Address</th><th>No. Employees</th>';
+    companyTable.appendChild(headings);
     section.appendChild(companyTable);
 }
 
