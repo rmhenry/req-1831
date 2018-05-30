@@ -51,15 +51,15 @@ function BuildCompanyTable(jsonObj) {
         section.appendChild(companyName);
 
         var addressArray = companies[i]['address'];
-        var addressString;
-        for (var j = 0; j < addressArray.length; j++) {
-            addressString += addressArray[j].street + ", ";
-            addressString += addressArray[j].state + ", ";
-            addressString += addressArray[j].zipCode;
-        }
+        //var addressString;
+        //for (var j = 0; j < addressArray.length; j++) {
+        //    addressString += addressArray[j].street + ", ";
+        //    addressString += addressArray[j].state + ", ";
+        //    addressString += addressArray[j].zipCode;
+        //}
 
         var address = document.createElement('p');
-        address.textContent = addressString;
+        address.textContent = addressArray[j].street + ", " + addressArray[j].state + ", " + addressArray[j].zipCode;
         section.appendChild(address);
     }
 
