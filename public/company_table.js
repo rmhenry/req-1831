@@ -45,7 +45,7 @@ function GetData(requestURL) {
     request.open('GET', requestURL);
     request.responseType = 'json';
     request.send();
-    return request.response;
+    request.onload = function () { return request.response; }
 }
 
 //var requestURL = 'http://localhost:8080/api/1/companies';
