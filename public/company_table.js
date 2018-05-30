@@ -53,9 +53,9 @@ function BuildCompanyTable(jsonObj) {
         var addressArray = companies[i]['address'];
         var addressString;
         for (var j = 0; j < addressArray.length; j++) {
-            addressString += address[j].street + ", ";
-            addressString += address[j].state + ", ";
-            addressString += address[j].zipCode;
+            addressString += addressArray[j].street + ", ";
+            addressString += addressArray[j].state + ", ";
+            addressString += addressArray[j].zipCode;
         }
 
         var address = document.createElement('p');
