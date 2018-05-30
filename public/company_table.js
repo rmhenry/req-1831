@@ -66,7 +66,7 @@ function BuildCompanyTable(jsonObj) {
 
         var people = peopleResponse['records'];
         for (var j = 0; j < people.length; j++) {
-            if (companyId == people[j].companyId)
+            if (companyId === people[j].companyId)
                 employeeCount++;
         }
 
