@@ -47,7 +47,7 @@ var section = document.querySelector('section');
 $(document).ready(function () {
     oldCompanies = $.getJSON('http://localhost:8080/api/1/companies');
     BuildCompanyTable(oldCompanies);
-
+}
 
 function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
