@@ -46,6 +46,7 @@ request.onload = function () {
 
 function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
+
     var headings = companyTable.insertRow();
     headings.innerHTML = '<th>Company Name</th><th>Address</th><th>No. Employees</th>';
     companyTable.appendChild(headings);
@@ -53,7 +54,22 @@ function BuildCompanyTable(jsonObj) {
     var companies = jsonObj['records'];
     for (var i = 0; i < companies.length; i++) {
         var addressArray = companies[i]['address'];
+        var companyId;
         var employeeCount = 0;
+
+        var requestURL = 'http://localhost:8080/api/1/people';
+        var peopleRequest = new XMLHttpRequest();
+        peopleRequest.open('GET', requestURL);
+        peopleRequest.responseType = 'json';
+        peopleRequest.send();
+        var peopleResponse = peopleRequest.response;
+
+        var people = peopleResponse['records'];
+        for (var j = 0; j < people.length; j++) {
+            if (companyId == people[j].companyId)
+                employeeCount++;
+        }
+
         var row = companyTable.insertRow();
         row.innerHTML = '<td>' + companies[i].name + '</td><td>' + addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode + '</td><td>' + employeeCount + '</td>';
         companyTable.appendChild(row);
@@ -64,12 +80,12 @@ function BuildCompanyTable(jsonObj) {
 
 function DisplayCompanyData(jsonObj) {
     var companies = jsonObj['records'];
-    for (var j = 0; j < companies.length; j++) {
+    for (var y = 0; y < companies.length; y++) {
         var companyName = document.createElement('p');
-        companyName.textContent = 'Company Name: ' + companies[j].name;
+        companyName.textContent = 'Company Name: ' + companies[y].name;
         section.appendChild(companyName);
 
-        var addressArray = companies[j]['address'];
+        var addressArray = companies[y]['address'];
         var address = document.createElement('p');
         address.textContent = addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode;
         section.appendChild(address);
