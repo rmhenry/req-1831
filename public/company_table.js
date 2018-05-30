@@ -39,7 +39,7 @@ request.responseType = 'json';
 request.send();
 
 request.onload = function () {
-    var comapnies = request.response;
+    var companies = request.response;
     BuildCompanyTable(companies);
 }
 
