@@ -32,22 +32,6 @@
 
 var section = document.querySelector('section');
 
-//window.onload = init;
-
-//function init() {
-//    var oldCompanies = GetData("http://localhost:8080/api/1/companies");
-//    BuildCompanyTable(oldCompanies);
-//    DisplayCompanyData(oldCompanies);
-//}
-
-//function GetData(requestURL) {
-//    var request = new XMLHttpRequest();
-//    request.open('GET', requestURL);
-//    request.responseType = 'json';
-//    request.send();
-//    request.onload = function () { return request.response; }
-//}
-
 var requestURL = 'http://localhost:8080/api/1/companies';
 var request = new XMLHttpRequest();
 request.open('GET', requestURL);
@@ -59,11 +43,6 @@ request.onload = function () {
     BuildCompanyTable(oldCompanies);
     DisplayCompanyData(oldCompanies);
 }
-
-//$(document).ready(function () {
-//    var oldCompanies = $.getJSON('http://localhost:8080/api/1/companies');
-//    BuildCompanyTable(oldCompanies);
-//});
 
 function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
@@ -77,21 +56,6 @@ function BuildCompanyTable(jsonObj) {
         var addressArray = companies[i]['address'];
         var companyId;
         var employeeCount = 0;
-
-        //var peopleRequestURL = 'http://localhost:8080/api/1/people';
-        //var peopleRequest = new XMLHttpRequest();
-        //peopleRequest.open('GET', peopleRequestURL);
-        //peopleRequest.responseType = 'json';
-        //peopleRequest.send();
-        //var peopleResponse = peopleRequest.response;
-
-        //var peopleJSON = $.getJSON("http://localhost:8080/api/1/people");
-
-        //var people = peopleJSON['records'];
-        //for (var j = 0; j < people.length; j++) {
-        //    if (companyId === people[j].companyId)
-        //        employeeCount++;
-        //}
 
         var row = companyTable.insertRow();
         row.innerHTML = '<td>' + companies[i].name + '</td><td>' + addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode + '</td><td>' + employeeCount + '</td>';
