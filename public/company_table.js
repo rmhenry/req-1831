@@ -30,18 +30,43 @@
 
 /* ================================================================= */
 
-var section = document.querySelector('section');
+//var section = document.querySelector('section');
 
-var requestURL = 'http://localhost:8080/api/1/companies';
-var request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
+//var requestURL = 'http://localhost:8080/api/1/companies';
+//var request = new XMLHttpRequest();
+//request.open('GET', requestURL);
+//request.responseType = 'json';
+//request.send();
 
-request.onload = function () {
-    var oldCompanies = request.response;
-    BuildCompanyTable(oldCompanies);
-    DisplayCompanyData(oldCompanies);
+//request.onload = function () {
+//    var oldCompanies = request.response;
+//    BuildCompanyTable(oldCompanies);
+//    DisplayCompanyData(oldCompanies);
+//}
+
+var companies1 = $.get("http://localhost:8080/api/1/companies");
+var people1 = $.get("http://localhost:8080/api/1/people");
+$.when(companies1, people1).done(function (companies1JSON, people1JSON) {
+    
+    var companyTable = document.createElement('table');
+
+    var headings = companyTable.insertRow();
+    headings.innerHTML = '<th>Company Name</th><th>Address</th><th>No. Employees</th>';
+    companyTable.appendChild(headings);
+
+    var companies = companies1JSON['records'];
+    for (var i = 0; i < companies.length; i++) {
+        var addressArray = companies[i]['address'];
+        var companyId;
+        var employeeCount = 0;
+
+        var row = companyTable.insertRow();
+        row.innerHTML = '<td>' + companies[i].name + '</td><td>' + addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode + '</td><td>' + employeeCount + '</td>';
+        companyTable.appendChild(row);
+    }
+
+    section.appendChild(companyTable);
+}
 }
 
 function BuildCompanyTable(jsonObj) {
