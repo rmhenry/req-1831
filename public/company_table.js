@@ -57,9 +57,9 @@ function BuildCompanyTable(jsonObj) {
         var companyId;
         var employeeCount = 0;
 
-        var requestURL = 'http://localhost:8080/api/1/people';
+        var peopleRequestURL = 'http://localhost:8080/api/1/people';
         var peopleRequest = new XMLHttpRequest();
-        peopleRequest.open('GET', requestURL);
+        peopleRequest.open('GET', peopleRequestURL);
         peopleRequest.responseType = 'json';
         peopleRequest.send();
         var peopleResponse = peopleRequest.response;
