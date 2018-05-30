@@ -48,19 +48,28 @@ function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
     var headings = companyTable.insertRow();
     headings.innerHTML = '<th>Company Name</th><th>Address</th><th>No. Employees</th>';
-    //companyTable.innerHTML = '<tr><th>Company Name</th><th>Address</th><th>No. Employees</th>';
     companyTable.appendChild(headings);
+
+    var companies = jsonObj['records'];
+    for (var i = 0; i < companies.length; i++) {
+        var addressArray = companies[i]['address'];
+        var employeeCount = 0;
+        var row = companyTable.insertRow();
+        row.innerHTML = '<td>' + companies[i].name + '</td><td>' + addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode + '</td><td>' + employeeCount + '</td>';
+        companyTable.appendChild(row);
+    }
+
     section.appendChild(companyTable);
 }
 
 function DisplayCompanyData(jsonObj) {
     var companies = jsonObj['records'];
-    for (var i = 0; i < companies.length; i++) {
+    for (var j = 0; j < companies.length; j++) {
         var companyName = document.createElement('p');
-        companyName.textContent = 'Company Name: ' + companies[i].name;
+        companyName.textContent = 'Company Name: ' + companies[j].name;
         section.appendChild(companyName);
 
-        var addressArray = companies[i]['address'];
+        var addressArray = companies[j]['address'];
         var address = document.createElement('p');
         address.textContent = addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode;
         section.appendChild(address);
