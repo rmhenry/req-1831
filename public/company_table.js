@@ -50,7 +50,7 @@ function BuildCompanyTable(jsonObj) {
         companyName.textContent = 'Company Name: ' + companies[i].name;
         section.appendChild(companyName);
 
-        var addressArray = companies[i].address;
+        var addressArray = companies[i]['address'];
         var addressString;
         for (var j = 0; j < addressArray.length; j++) {
             addressString += address[j].street + ", ";
