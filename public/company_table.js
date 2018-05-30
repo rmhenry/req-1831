@@ -47,7 +47,7 @@
 var companies1 = $.get("http://localhost:8080/api/1/companies");
 var people1 = $.get("http://localhost:8080/api/1/people");
 $.when(companies1, people1).done(function (companies1JSON, people1JSON) {
-    
+
     var companyTable = document.createElement('table');
 
     var headings = companyTable.insertRow();
@@ -66,8 +66,7 @@ $.when(companies1, people1).done(function (companies1JSON, people1JSON) {
     }
 
     section.appendChild(companyTable);
-}
-}
+});
 
 function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
