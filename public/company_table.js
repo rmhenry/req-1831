@@ -64,7 +64,7 @@ function BuildCompanyTable(jsonObj) {
         //peopleRequest.send();
         //var peopleResponse = peopleRequest.response;
 
-        var peopleJSON = $.get('http://localhost:8080/api/1/people');
+        var peopleJSON = $.getJSON("http://localhost:8080/api/1/people");
 
         var people = peopleJSON['records'];
         for (var j = 0; j < people.length; j++) {
