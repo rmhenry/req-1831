@@ -59,7 +59,7 @@ function BuildCompanyTable(jsonObj) {
         //}
 
         var address = document.createElement('p');
-        address.textContent = addressArray[j].street + ", " + addressArray[j].state + ", " + addressArray[j].zipCode;
+        address.textContent = addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode;
         section.appendChild(address);
     }
 
