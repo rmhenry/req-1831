@@ -40,10 +40,17 @@ request.send();
 
 request.onload = function () {
     var oldCompanies = request.response;
-    BuildCompanyTable(oldCompanies);
+    BuildCompanyTable();
+    DisplayCompanyData(oldCompanies);
 }
 
-function BuildCompanyTable(jsonObj) {
+function BuildCompanyTable() {
+    var companyTable = document.createElement('table');
+    companyTable.innerHTML = '<tr><th>Company Name</th><th>Address</th><th>No. Employees</th>';
+    section.appendChild(companyTable);
+}
+
+function DisplayCompanyData(jsonObj) {
     var companies = jsonObj['records'];
     for (var i = 0; i < companies.length; i++) {
         var companyName = document.createElement('p');
@@ -51,16 +58,8 @@ function BuildCompanyTable(jsonObj) {
         section.appendChild(companyName);
 
         var addressArray = companies[i]['address'];
-        //var addressString;
-        //for (var j = 0; j < addressArray.length; j++) {
-        //    addressString += addressArray[j].street + ", ";
-        //    addressString += addressArray[j].state + ", ";
-        //    addressString += addressArray[j].zipCode;
-        //}
-
         var address = document.createElement('p');
         address.textContent = addressArray.street + ", " + addressArray.state + ", " + addressArray.zipCode;
         section.appendChild(address);
     }
-
 }
