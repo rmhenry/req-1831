@@ -39,12 +39,16 @@ request.responseType = 'json';
 request.send();
 
 request.onload = function () {
-    var companies = request.response;
-    BuildCompanyTable(companies);
+    var oldCompanies = request.response;
+    BuildCompanyTable(oldCompanies);
 }
 
 function BuildCompanyTable(jsonObj) {
-    var companyName = document.createElement('p');
-    companyName.textContent = 'Company Name: ' + jsonObj['name'];
-    section.appendChild(companyName);
+    var companies = jsonObj['records'];
+    for (var i = 0; i < companies.length; i++) {
+        var companyName = document.createElement('p');
+        companyName.textContent = 'Company Name: ' + companies[i].name;
+        section.appendChild(companyName);
+    }
+
 }
