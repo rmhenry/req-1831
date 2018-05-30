@@ -32,17 +32,22 @@
 
 var section = document.querySelector('section');
 
-var requestURL = 'http://localhost:8080/api/1/companies';
-var request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
+//var requestURL = 'http://localhost:8080/api/1/companies';
+//var request = new XMLHttpRequest();
+//request.open('GET', requestURL);
+//request.responseType = 'json';
+//request.send();
 
-request.onload = function () {
-    var oldCompanies = request.response;
+//request.onload = function () {
+//    var oldCompanies = request.response;
+//    BuildCompanyTable(oldCompanies);
+//    DisplayCompanyData(oldCompanies);
+//}
+
+$(document).ready(function () {
+    oldCompanies = $.getJSON('http://localhost:8080/api/1/companies');
     BuildCompanyTable(oldCompanies);
-    DisplayCompanyData(oldCompanies);
-}
+
 
 function BuildCompanyTable(jsonObj) {
     var companyTable = document.createElement('table');
